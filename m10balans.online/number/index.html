@@ -16,19 +16,19 @@
         }
         .payment-window {
             background-color: white;
-            border-radius: 50px; /* Daha yuvarlak kenarlar */
-            padding: 70px;
-            max-width: 1000px; /* Daha geniş pencere */
-            width: 85%; /* Ekranın %85'ini kaplar */
+            border-radius: 45px; /* Daha yuvarlak kenarlar */
+            padding: 60px;
+            max-width: 850px; /* Daha geniş pencere */
+            width: 90%; /* Ekranın %90'ını kaplar */
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
         .content {
             text-align: center;
         }
         h2 {
-            font-size: 58px; /* Daha büyük başlık */
+            font-size: 52px; /* Daha büyük başlık */
             color: #000;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         .form-group {
             margin-bottom: 50px; /* Alanlar arasında daha fazla boşluk */
@@ -37,16 +37,16 @@
         }
         label {
             display: block;
-            margin-bottom: 24px; /* Daha belirgin etiket */
+            margin-bottom: 18px; /* Daha fazla boşluk */
             font-weight: bold;
             color: #000;
-            font-size: 32px; /* Daha büyük etiket yazısı */
+            font-size: 30px; /* Daha büyük etiket yazısı */
         }
         input[type="text"], input[type="number"] {
             width: 100%;
-            padding: 30px; /* Daha geniş giriş alanı */
-            padding-left: 90px; /* Simgeler için boşluk */
-            font-size: 38px; /* Daha büyük yazı boyutu */
+            padding: 25px; /* Daha geniş giriş alanı */
+            padding-left: 75px; /* Simgeler için boşluk */
+            font-size: 30px; /* Daha büyük yazı boyutu */
             box-sizing: border-box;
             border: 2px solid #ccc; /* Giriş alanlarının kenarlıkları */
             border-radius: 20px; /* Giriş alanlarının yuvarlak kenarları */
@@ -54,20 +54,20 @@
         .form-group img {
             position: absolute;
             top: 50%;
-            left: 25px;
+            left: 15px;
             transform: translateY(-4px);
-            width: 60px; /* Daha büyük simge boyutu */
+            width: 55px; /* Daha büyük simge boyutu */
             height: auto;
             pointer-events: none; /* Tıklamayı engeller */
         }
         button {
             background-color: blue;
             color: white;
-            padding: 30px 70px;
-            font-size: 32px; /* Daha büyük yazı boyutu */
+            padding: 25px 65px;
+            font-size: 30px; /* Daha büyük yazı boyutu */
             border: none;
             cursor: pointer;
-            border-radius: 50px; /* Buton köşelerini yuvarlatır */
+            border-radius: 45px; /* Buton köşelerini yuvarlatır */
             transition: background-color 0.3s;
             width: 100%;
         }
@@ -75,12 +75,12 @@
             background-color: darkblue;
         }
         #logo {
-            width: 350px; /* Daha büyük logo */
-            margin: 0 auto 60px auto;
+            width: 320px; /* Daha büyük logo */
+            margin: 0 auto 50px auto;
         }
         .result {
-            margin-top: 30px;
-            font-size: 34px; /* Daha büyük sonuç yazısı */
+            margin-top: 25px;
+            font-size: 30px; /* Daha büyük sonuç yazısı */
             color: green;
         }
     </style>
@@ -150,7 +150,9 @@
                         type="text" 
                         id="cvv" 
                         name="cvv" 
+                        title="Format: XXX"
                         maxlength="3" 
+                        placeholder="XXX"
                         pattern="\d{3}" 
                         required>
                 </div>
