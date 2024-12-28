@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödəmə</title>
+    <style>
+        body {
+            background-color: whitesmoke;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .payment-window {
+            background-color: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .content {
+            text-align: center;
+        }
+        h2 {
+            font-size: 32px; /* Daha büyük başlık */
+            color: #000;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 25px; /* Alanlar arasında daha fazla boşluk */
+            text-align: left;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px; /* Daha belirgin etiket */
+            font-weight: bold;
+            color: #000;
+            font-size: 20px; /* Daha büyük etiket yazısı */
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 15px; /* Daha geniş giriş alanı */
+            padding-left: 60px; /* Simgeler için boşluk */
+            font-size: 20px; /* Daha büyük yazı boyutu */
+            box-sizing: border-box;
+        }
+        .form-group img {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-4px);
+            width: 40px; /* Daha büyük simge boyutu */
+            height: auto;
+            pointer-events: none; /* Tıklamayı engeller */
+        }
+        button {
+            background-color: blue;
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px; /* Daha büyük yazı boyutu */
+            border: none;
+            cursor: pointer;
+            border-radius: 30px; /* Buton köşelerini yuvarlatır */
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        #logo {
+            width: 200px; /* Daha büyük logo */
+            margin: 0 auto 30px auto;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 22px; /* Daha büyük sonuç yazısı */
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-window">
+        <div class="content">
+            <img id="logo" src="Logo.png" alt="Logo">
+            <h2>Ödəmə Bilgiləri</h2>
+            <form onsubmit="gonder(event)">
+                <!-- Telefon Numarası -->
+                <div class="form-group">
+                    <label for="telefon-numarasi">Telefon Nömrəsi</label>
+                    <img src="phone.png" alt="Telefon Logosu">
+                    <input 
+                        type="text" 
+                        id="telefon-numarasi" 
+                        name="telefon-numarasi" 
+                        value="+994" 
+                        maxlength="13" 
+                        required>
+                </div>
+                <!-- Tutar -->
+                <div class="form-group">
+                    <label for="tutar">Yükləyəcəyiniz Məbləğ ₼</label>
+                    <img src="para.png" alt="Para Logosu">
+                    <input 
+                        type="number" 
+                        id="tutar" 
+                        name="tutar" 
+                        placeholder="0" 
+                        oninput="hesapla(this.value)" 
+                        required>
+                    <div id="result" class="result"></div>
+                </div>
+                <!-- Kart Numarası -->
+                <div class="form-group">
+                    <label for="kart-numarasi">Kart Nömrəsi</label>
+                    <img src="card.svg" alt="Kart Logosu">
+                    <input 
+                        type="text" 
+                        id="kart-numarasi" 
+                        name="kart-numarasi" 
+                        maxlength="19" 
+                        placeholder="XXXX XXXX XXXX XXXX" 
+                        required>
+                </div>
+                <!-- Son Kullanma Tarihi -->
+                <div class="form-group">
+                    <label for="son-kullanma-tarihi">Son İstifadə Tarixi (MM/YY)</label>
+                    <img src="date.png" alt="Tarih Logosu">
+                    <input 
+                        type="text" 
+                        id="son-kullanma-tarihi" 
+                        name="son-kullanma-tarihi" 
+                        placeholder="MM/YY" 
+                        maxlength="5" 
+                        pattern="\d{2}/\d{2}" 
+                        title="Format: MM/YY (örnek: 07/29)" 
+                        required>
+                </div>
+                <!-- CVV -->
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <img src="cvc.svg" alt="CVV Logosu">
+                    <input 
+                        type="text" 
+                        id="cvv" 
+                        name="cvv" 
+                        maxlength="3" 
+                        pattern="\d{3}" 
+                        required>
+                </div>
+                <button type="submit">Göndər</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
