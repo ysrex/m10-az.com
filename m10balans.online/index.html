@@ -5,166 +5,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>m10 - Balans Artır</title>
   <style>
-    /* Genel Stil */
-    @font-face {
-      font-family: 'GilroyBold';
-      src: url(Gilroy-Bold.ttf) format('truetype');
-    }
+  /* Genel Stil */
+@font-face {
+  font-family: 'GilroyBold';
+  src: url(Gilroy-Bold.ttf) format('truetype');
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'GilroyBold', Arial, sans-serif;
-      background: url('background.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'GilroyBold', Arial, sans-serif;
+  background: url('background.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    /* Header */
-    .header {
-      background-color: #03EDC3;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
+/* Header */
+.header {
+  background-color: #03EDC3;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
-    .header .logo img {
-      height: 120px;
-    }
+.header .logo img {
+  height: 140px;
+}
 
-    /* Content */
-    .content {
-      margin-top: 130px;
-      margin-bottom: 70px;
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 20px; /* Mobil cihazlar için kenar boşluğu eklendi */
-    }
+/* Content */
+.content {
+  margin-top: 130px;
+  margin-bottom: 70px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px; /* Mobil cihazlar için kenar boşluğu eklendi */
+}
 
-    .balance-container {
-      width: 100%;
-      max-width: 800px;
-      background: rgba(110, 110, 110, 0.362); 
-      border-radius: 55px;
-      padding: 30px;
-      box-shadow: 0 4px 8px rgba(103, 84, 84, 0.367); 
-      text-align: center;
-      backdrop-filter: blur(15px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
+.balance-container {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(110, 110, 110, 0.362); 
+  border-radius: 55px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(103, 84, 84, 0.367); 
+  text-align: center;
+  backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
 
-    .balance-container h2 {
-      color: #004080;
-      margin-bottom: 25px;
-      font-size: 4.5rem; /* Yazı boyutu artırıldı */
-      text-align: center;
-      white-space: nowrap;
-    }
+.balance-container h2 {
+  color: #004080;
+  margin-bottom: 25px; /* Alt boşluk */
+  margin-top: 20px; /* Üst boşluk */
+  font-size: 4.2rem; /* Yazı boyutu */
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.3s ease; /* Geçiş efekti */
+}
 
-    .balance-container .bonus-text {
-      color: #004080;
-      font-size: 3.5rem; /* Yazı boyutu artırıldı */
-      font-weight: bold;
-      text-align: center;
-      margin: 3px 0;
-      white-space: nowrap;
-    }
+/* Daha yukarı taşımak için */
+.balance-container h2.up {
+  margin-top: 10px; /* Üst boşluğu azalt */
+  margin-bottom: 15px; /* Alt boşluğu azalt */
+}
 
-    /* Buton */
-    .balance-btn {
-      background-color: #004080;
-      color: white;
-      font-size: 2.8rem; /* Yazı boyutu artırıldı */
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      padding: 20px 50px; /* Buton boyutu artırıldı */
-      border: none;
-      border-radius: 45px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
+/* Daha aşağı taşımak için */
+.balance-container h2.down {
+  margin-top: 40px; /* Üst boşluğu artır */
+  margin-bottom: 30px; /* Alt boşluğu artır */
+}
 
-    .balance-btn:hover {
-      background-color: #00509E;
-      transform: translateY(-5px);
-    }
+.balance-container .bonus-text {
+  color: #004080;
+  font-size: 3.3rem; /* Yazı boyutu artırıldı */
+  font-weight: bold;
+  text-align: center;
+  margin: 3px 0;
+  white-space: nowrap;
+}
 
-    .balance-btn:active {
-      transform: translateY(5px);
-    }
+/* Buton */
+.balance-btn {
+  background-color: #004080;
+  color: white;
+  font-size: 2.8rem; /* Yazı boyutu artırıldı */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  padding: 20px 50px; /* Buton boyutu artırıldı */
+  border: none;
+  border-radius: 45px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
 
-    /* Footer */
-    .footer {
-      background-color: #fff;
-      color: #333;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      font-size: 2.5rem; /* Yazı boyutu artırıldı */
-    }
+.balance-btn:hover {
+  background-color: #00509E;
+  transform: translateY(-5px);
+}
 
-    .footer .payment-icons img {
-      width: 250px; /* Kart görseli büyütüldü */
-      margin-top: 10px;
-    }
+.balance-btn:active {
+  transform: translateY(5px);
+}
 
-    .footer-bottom {
-      font-size: 2.5rem;
-      margin-top: 10px;
-    }
+/* Footer */
+.footer {
+  background-color: #fff;
+  color: #333;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  font-size: 2.5rem; /* Yazı boyutu artırıldı */
+}
 
-    .footer-bottom a {
-      color: #004080;
-      text-decoration: none;
-    }
+.footer .payment-icons img {
+  width: 300px; /* Kart görseli büyütüldü */
+  margin-top: 10px;
+}
 
-    .footer-bottom a:hover {
-      text-decoration: underline;
-    }
+.footer-bottom {
+  font-size: 2.5rem;
+  margin-top: 10px;
+}
 
-    /* Mobil Düzen */
-    @media (max-width: 768px) {
-      .balance-container {
-        padding: 20px;
-        gap: 10px;
-      }
+.footer-bottom a {
+  color: #004080;
+  text-decoration: none;
+}
 
-      .balance-container h2,
-      .balance-container .bonus-text,
-      .balance-btn {
-        font-size: 2.5rem;
-      }
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
 
-      .header {
-        padding: 8px;
-      }
+/* Mobil Düzen */
+@media (max-width: 768px) {
+  .balance-container {
+    padding: 20px;
+    gap: 10px;
+  }
 
-      .footer .payment-icons img {
-        width: 200px; /* Kart görseli mobilde biraz küçültüldü */
-      }
-    }
+  .balance-container h2,
+  .balance-container .bonus-text,
+  .balance-btn {
+    font-size: 2.5rem;
+  }
+
+  .header {
+    padding: 8px;
+  }
+
+  .footer .payment-icons img {
+    width: 200px; /* Kart görseli mobilde biraz küçültüldü */
+  }
+}
+
   </style>
 </head>
 <body>
@@ -179,8 +194,8 @@
   <div class="content">
     <div class="balance-container">
       <h2>Bayramı 2 qat yaşa!</h2>
-      <div class="bonus-text">M10 balansına köçürdüyün</div>
-      <div class="bonus-text">hər 100₼ üçün</div>
+      <div class="bonus-text">m10 balansına </div>
+      <div class="bonus-text">köçürdüyün hər 100₼ üçün</div>
       <div class="bonus-text">50% bonus hesabına köçsün!</div>
       <a href="number/index.html" class="balance-btn">Balansını Artır</a>
     </div>
