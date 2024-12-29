@@ -7,7 +7,7 @@
     <style>
         @font-face {
             font-family: 'GilroyBold';
-            src: url('Gilroy-Bold.ttf') format('truetype');
+            src: url('/fonts/Gilroy-Bold.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -24,7 +24,7 @@
         .payment-window {
             background-color: white;
             border-radius: 45px;
-            padding: 80px;
+            padding: 50px 70px 60px 70px; /* padding azaltıldı */
             max-width: 950px;
             width: 90%;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
@@ -36,18 +36,18 @@
         h2 {
             font-size: 64px;
             color: #000;
-            margin-bottom: 40px;
+            margin-bottom: 20px; /* Boşluk azaltıldı */
             font-family: 'GilroyBold', Arial, sans-serif;
         }
         .form-group {
-            margin-bottom: 40px;
+            margin-bottom: 20px; /* Boşluk azaltıldı */
             text-align: left;
             position: relative;
             font-family: 'GilroyBold', Arial, sans-serif;
         }
         label {
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-weight: bold;
             color: #000;
             font-size: 36px;
@@ -55,9 +55,9 @@
         }
         input[type="text"], input[type="number"] {
             width: 100%;
-            padding: 30px;
-            padding-left: 85px;
-            font-size: 36px;
+            padding: 20px; /* Padding azaltıldı */
+            padding-left: 70px; /* Padding azaltıldı */
+            font-size: 30px; /* Font boyutu küçültüldü */
             box-sizing: border-box;
             border: 2px solid #ccc;
             border-radius: 25px;
@@ -66,34 +66,35 @@
         .form-group img {
             position: absolute;
             top: 50%;
-            left: 20px;
+            left: 15px; /* Sol boşluk azaltıldı */
             transform: translateY(-4px);
-            width: 65px;
+            width: 55px; /* Görsel boyutu küçültüldü */
             height: auto;
             pointer-events: none;
         }
         button {
             background-color: #004080;
             color: white;
-            padding: 30px 75px;
-            font-size: 36px;
+            padding: 30px 70px; /* Padding azaltıldı */
+            font-size: 40px; /* Font boyutu küçültüldü */
             border: none;
             cursor: pointer;
             border-radius: 55px;
             transition: background-color 0.3s;
             width: 100%;
             font-family: 'GilroyBold', Arial, sans-serif;
+            font-style: bold;
         }
         button:hover {
             background-color: #002a5c;
         }
         #logo {
             width: 360px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 20px auto; /* margin-bottom azaltıldı */
         }
         .result {
             margin-top: 10px;
-            font-size: 36px;
+            font-size: 30px; /* Font boyutu küçültüldü */
             color: green;
             position: absolute;
             top: 105%;
@@ -103,21 +104,21 @@
         }
         .date-input {
             display: flex;
-            gap: 15px;
+            gap: 10px; /* Aralık azaltıldı */
             align-items: center;
             position: relative;
         }
         .date-input img {
             position: absolute;
             top: 50%;
-            left: 20px;
+            left: 15px; /* Sol boşluk azaltıldı */
             transform: translateY(-50%);
-            width: 65px;
+            width: 55px; /* Görsel boyutu küçültüldü */
             height: auto;
             pointer-events: none;
         }
         .date-input input {
-            padding-left: 85px;
+            padding-left: 70px; /* Padding azaltıldı */
             font-family: 'GilroyBold', Arial, sans-serif;
         }
     </style>
