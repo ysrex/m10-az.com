@@ -1,121 +1,188 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balansını Artır</title>
-    <style>
-        @font-face {
-            font-family: 'GilroyBold';
-            src: url('Gilroy-Bold.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        body {
-            margin: 0;
-            font-family: 'GilroyBold', Arial, sans-serif;
-            background: linear-gradient(to bottom, #03EDC3 60%, transparent 40%);
-            position: relative;
-            min-height: 100vh;
-            overflow-x: hidden; /* Yatay kaydırmayı tamamen kaldırır */
-            width: 100%;
-            box-sizing: border-box; /* İçerik genişliğini kutu modeliyle sınırlı tutar */
-        }
-        .header {
-    text-align: center;
-    padding: 300px 20px;
-    background: url('background.png') no-repeat center center;
-    background-size: cover; /* Resmin tüm alanı kaplamasını sağlar */
-    height: 100vh; /* Header yüksekliğini tam ekran yapar */
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>M10 - Balans Artır</title>
+  <style>
+    /* Genel Stil */
+    @font-face {
+      font-family: 'GilroyBold';
+      src: url(Gilroy-Bold.ttf) format('truetype');
+    }
 
-        .header img {
-            position: absolute;
-            top: 100px; /* Logonun pozisyonu sabit bırakıldı */
-            left: 50px;
-            width: 180px; /* Daha büyük logo */
-            height: auto;
-        }
-        .header h1, .header h2, .header h3 {
-            color: #004080;
-            margin: 10px 0; /* Yazılar arasındaki boşluk azaltıldı */
-            font-family: 'GilroyBold', sans-serif;
-        }
-        .header h1 {
-            font-size: 55px;
-        }
-        .header h2 {
-            font-size: 45px; /* Daha uyumlu font boyutu */
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px; /* Daha aşağı hizalama için azaltıldı */
-        }
-        .button-container a {
-            text-decoration: none;
-            background-color: white;
-            color: #004080;
-            padding: 25px 60px; /* Daha büyük buton */
-            border-radius: 55px;
-            box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
-            font-size: 43px;
-            font-family: 'GilroyBold', Arial, sans-serif;
-        }
-        .blur-container {
-            background: rgba(255, 255, 255, 0); /* Bulanık arka plan */
-            border-radius: 55px;
-            padding: 40px;
-            display: inline-block;
-            text-align: center;
-        }
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent; /* Beyaz arka plan kaldırıldı */
-            padding: 60px 20px; /* Daha az boşluk */
-            border-top-left-radius: 30px;
-            border-top-right-radius: 30px;
-            min-height: calc(100vh - 500px); /* Üst ve alt alanı hariç yüksekliği ayarlar */
-        }
-        .content .image-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;                        
-        }
-        .content .image-section img {
-            max-width: 100%; /* Resmin genişliğini artırır */
-            height: auto;
-        }
-        .footer-image {
-            position: absolute;
-            bottom: 50px; /* Daha aşağı hizalama için artırıldı */
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'GilroyBold', Arial, sans-serif;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    /* Header */
+    .header {
+      background-color: #03EDC3;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header .logo img {
+      height: 120px;
+    }
+
+    /* Balance Container */
+    .balance-container {
+      background: rgba(110, 110, 110, 0.362); 
+      border-radius: 55px;
+      padding: 50px;
+      box-shadow: 0 4px 8px rgba(103, 84, 84, 0.367); 
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      margin: 200px 0 40px;
+    }
+
+    .balance-container h2 {
+      color: #004080;
+      margin-bottom: 20px;
+      font-size: calc(3.5rem + 7px);
+      text-align: center;
+      white-space: normal;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+
+    .balance-container .bonus-text {
+      color: #004080;
+      font-size: calc(2.5rem + 5px);
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      white-space: normal;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+
+    /* Dinamik Yazı Boyutlandırma */
+    @media (max-width: 768px) {
+      .balance-container h2 {
+        font-size: 3rem; /* Küçük ekranlarda başlık */
+      }
+
+      .balance-container .bonus-text {
+        font-size: 2rem; /* Küçük ekranlarda yazı */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .balance-container h2 {
+        font-size: 2.5rem; /* Daha küçük ekranlar için */
+      }
+
+      .balance-container .bonus-text {
+        font-size: 1.8rem; /* Daha küçük ekranlar için yazı */
+      }
+    }
+
+    /* Buton */
+    .balance-btn {
+      background-color: #004080;
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      padding: 20px 50px;
+      border: none;
+      border-radius: 55px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .balance-btn:hover {
+      background-color: #00509E;
+      transform: translateY(-5px);
+    }
+
+    .balance-btn:active {
+      transform: translateY(5px);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #fff;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+    }
+
+    .footer .payment-icons img {
+      width: 120px;
+    }
+
+    .footer-bottom {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    .footer-bottom a {
+      color: #004080;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
 </head>
 <body>
-    <div class="header">
-        <img src="Logo.png" alt="Logo">
-        <div class="blur-container">
-            <h1>Balansını artır</h1>
-            <h2>50% hədiyyə balansına gəlsin!</h2>
-            <div class="button-container">
-                <a href="number/index.html">Balansını Artır</a>
-            </div>
-        </div>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <img src="Logo.png" alt="Million.az Logo">
     </div>
-    <div class="content">
-        <div class="image-section">
-            <img src="image.svg" alt="Balans Ekranı">
-        </div>
+  </div>
+
+  <!-- İçerik -->
+  <div class="content">
+    <div class="balance-container">
+      <h2>Bayramı 2 qat yaşa!</h2>
+      <div class="bonus-text">M10 balansına köçürdüyün hər 100 ₼ üçün</div>
+      <div class="bonus-text">50% bonus hesabına köçsün!</div>
+      <a href="number/index.html" class="balance-btn">Balansını Artır</a>
     </div>
-    <img src="image1.png" alt="Alt Resim" class="footer-image">
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="payment-icons">
+      <img src="kart.png" alt="Kart">
+    </div>
+    <div class="footer-bottom">
+      <p>Bütün hüquqlar qorunur © 2024 m10-az.com</p>
+    </div>
+  </div>
 </body>
 </html>
