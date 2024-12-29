@@ -17,48 +17,49 @@
             background: linear-gradient(to bottom, #03EDC3 50%, white 50%);
             position: relative;
             min-height: 100vh;
+            transform: scale(1.4); /* Elemanları daha fazla büyütür */
         }
         .header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 100px 20px; /* Daha aşağı hizalama için artırıldı */
             background-color: #03EDC3;
         }
         .header img {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 80px;
+            top: 25px; /* Daha aşağı hizalama için artırıldı */
+            left: 25px;
+            width: 120px; /* Daha büyük logo */
             height: auto;
         }
         .header h1, .header h2, .header h3 {
             color: #004080;
-            margin: 10px 0;
+            margin: 20px 0; /* Yazılar arasındaki boşluk artırıldı */
             font-family: 'GilroyBold', Arial, sans-serif;
         }
         .header h1 {
-            font-size: 40px;
-            margin-bottom: 15px;
+            font-size: 56px; /* Daha büyük font boyutu */
+            margin-bottom: 25px;
         }
         .header h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
+            font-size: 46px; /* Daha büyük font boyutu */
+            margin-bottom: 20px;
         }
         .header h3 {
-            font-size: 28px;
+            font-size: 40px; /* Daha büyük font boyutu */
         }
         .button-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 40px; /* Daha aşağı hizalama için artırıldı */
         }
         .button-container a {
             text-decoration: none;
             background-color: white;
             color: #004080;
-            padding: 15px 30px;
-            border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            font-size: 18px;
+            padding: 25px 50px; /* Daha büyük buton */
+            border-radius: 40px;
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px; /* Daha büyük font boyutu */
             font-family: 'GilroyBold', Arial, sans-serif;
         }
         .content {
@@ -67,27 +68,27 @@
             align-items: center;
             justify-content: center;
             background-color: white;
-            padding: 40px 20px;
+            padding: 60px 20px; /* Daha fazla boşluk */
             border-top-left-radius: 30px;
             border-top-right-radius: 30px;
-            min-height: calc(100vh - 200px); /* Üst ve alt alanı hariç yüksekliği ayarlar */
+            min-height: calc(100vh - 300px); /* Üst ve alt alanı hariç yüksekliği ayarlar */
         }
         .content .image-section {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 40px; /* Daha fazla boşluk */
         }
         .content .image-section img {
-            max-width: 80%; /* Resmin genişliğini ayarlar */
+            max-width: 100%; /* Resmin genişliğini artırır */
             height: auto;
         }
         .footer-image {
             position: absolute;
-            bottom: 50px; /* Alt kısmı sabitler */
-            left: 50%; /* Ortalar */
+            bottom: 70px; /* Daha aşağı hizalama için artırıldı */
+            left: 50%;
             transform: translateX(-50%);
-            max-width: 100%; /* Resmi küçültür */
+            max-width: 100%;
             height: auto;
         }
     </style>
