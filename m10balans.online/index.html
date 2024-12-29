@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>m10 - Balans Artır</title>
   <style>
-  /* Genel Stil */
+/* Genel Stil */
 @font-face {
   font-family: 'GilroyBold';
   src: url(Gilroy-Bold.ttf) format('truetype');
@@ -81,18 +81,6 @@ body {
   transition: all 0.3s ease; /* Geçiş efekti */
 }
 
-/* Daha yukarı taşımak için */
-.balance-container h2.up {
-  margin-top: 10px; /* Üst boşluğu azalt */
-  margin-bottom: 15px; /* Alt boşluğu azalt */
-}
-
-/* Daha aşağı taşımak için */
-.balance-container h2.down {
-  margin-top: 40px; /* Üst boşluğu artır */
-  margin-bottom: 30px; /* Alt boşluğu artır */
-}
-
 .balance-container .bonus-text {
   color: #004080;
   font-size: 3.3rem; /* Yazı boyutu artırıldı */
@@ -161,22 +149,32 @@ body {
 /* Mobil Düzen */
 @media (max-width: 768px) {
   .balance-container {
-    padding: 20px;
+    padding: 15px;
     gap: 10px;
   }
 
-  .balance-container h2,
-  .balance-container .bonus-text,
-  .balance-btn {
-    font-size: 2.5rem;
+  .balance-container h2 {
+    font-size: 3rem; /* Başlık boyutunu mobil için optimize et */
+    margin-top: 15px;
+    margin-bottom: 20px;
   }
 
-  .header {
-    padding: 8px;
+  .balance-container .bonus-text {
+    font-size: 2.5rem; /* Bonus yazısını küçült */
+  }
+
+  .balance-btn {
+    font-size: 2.5rem; /* Buton yazısını küçült */
+    padding: 15px 30px; /* Buton boyutunu küçült */
+  }
+
+  .footer {
+    padding: 20px;
+    font-size: 2rem; /* Footer yazı boyutunu küçült */
   }
 
   .footer .payment-icons img {
-    width: 200px; /* Kart görseli mobilde biraz küçültüldü */
+    width: 150px; /* Kart görsellerini daha da küçült */
   }
 }
 
