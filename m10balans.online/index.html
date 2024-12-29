@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Million.az - Balans Artır</title>
+  <title>m10 - Balans Artır</title>
   <style>
     /* Genel Stil */
     @font-face {
@@ -30,7 +30,7 @@
     /* Header */
     .header {
       background-color: #03EDC3;
-      padding: 10px; /* Boşluk azaltıldı */
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,58 +47,60 @@
 
     /* Content */
     .content {
-      margin-top: 130px; /* Header yüksekliği kadar boşluk azaltıldı */
-      margin-bottom: 70px; /* Footer için boşluk azaltıldı */
+      margin-top: 130px;
+      margin-bottom: 70px;
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 0 20px; /* Mobil cihazlar için kenar boşluğu eklendi */
     }
 
     .balance-container {
-      margin: 0 auto;
-      max-width: 90%;
       width: 100%;
+      max-width: 800px;
       background: rgba(110, 110, 110, 0.362); 
       border-radius: 55px;
-      padding: 30px; /* İçerik boşluğu azaltıldı */
+      padding: 30px;
       box-shadow: 0 4px 8px rgba(103, 84, 84, 0.367); 
       text-align: center;
       backdrop-filter: blur(15px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px; /* Elemanlar arasındaki boşluk azaltıldı */
+      gap: 15px;
     }
 
     .balance-container h2 {
-  color: #004080;
-  margin-bottom: 25px; /* Alt boşluğu ayarlar */
-  margin-top: 10px; /* Üst boşluğu ayarlar, artır veya azalt */
-  font-size: 3.7rem; /* Yazı boyutu */
-  text-align: center;
-}
+      color: #004080;
+      margin-bottom: 25px;
+      font-size: 4.5rem; /* Yazı boyutu artırıldı */
+      text-align: center;
+      white-space: nowrap;
+    }
 
     .balance-container .bonus-text {
       color: #004080;
-      font-size: 3.1rem; /* Yazı boyutu artırıldı */
+      font-size: 3.5rem; /* Yazı boyutu artırıldı */
       font-weight: bold;
       text-align: center;
-      margin: 3px 0; /* Yazılar arasındaki boşluk azaltıldı */
+      margin: 3px 0;
+      white-space: nowrap;
     }
 
     /* Buton */
     .balance-btn {
       background-color: #004080;
       color: white;
-      font-size: 2.3rem; /* Yazı boyutu artırıldı */
+      font-size: 2.8rem; /* Yazı boyutu artırıldı */
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      padding: 15px 40px; /* Buton iç boşluğu azaltıldı */
+      padding: 20px 50px; /* Buton boyutu artırıldı */
       border: none;
       border-radius: 45px;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.3s ease;
+      white-space: nowrap;
     }
 
     .balance-btn:hover {
@@ -114,23 +116,23 @@
     .footer {
       background-color: #fff;
       color: #333;
-      padding: 30px; /* Boşluk azaltıldı */
+      padding: 30px;
       text-align: center;
       box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
       width: 100%;
       position: fixed;
       bottom: 0;
-      font-size: 2rem; /* Yazı boyutu artırıldı */
+      font-size: 2.5rem; /* Yazı boyutu artırıldı */
     }
 
     .footer .payment-icons img {
-      width: 120px;
-      margin-top: 10px; /* Üst boşluk azaltıldı */
+      width: 250px; /* Kart görseli büyütüldü */
+      margin-top: 10px;
     }
 
     .footer-bottom {
-      font-size: 2rem; /* Yazı boyutu artırıldı */
-      margin-top: 10px; /* Alt boşluk azaltıldı */
+      font-size: 2.5rem;
+      margin-top: 10px;
     }
 
     .footer-bottom a {
@@ -144,20 +146,23 @@
 
     /* Mobil Düzen */
     @media (max-width: 768px) {
+      .balance-container {
+        padding: 20px;
+        gap: 10px;
+      }
+
       .balance-container h2,
       .balance-container .bonus-text,
       .balance-btn {
-        font-size: 1.7rem;
-        padding: 10px 30px;
-      }
-
-      .balance-container {
-        padding: 15px;
-        gap: 5px;
+        font-size: 2.5rem;
       }
 
       .header {
         padding: 8px;
+      }
+
+      .footer .payment-icons img {
+        width: 200px; /* Kart görseli mobilde biraz küçültüldü */
       }
     }
   </style>
@@ -187,7 +192,7 @@
       <img src="kart.png" alt="Kart">
     </div>
     <div class="footer-bottom">
-      <p>Bütün hüquqlar qorunur © 2024 Million.az</p>
+      <p>Bütün hüquqlar qorunur © 2024 m10-az.com</p>
     </div>
   </div>
 </body>
