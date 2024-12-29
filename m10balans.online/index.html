@@ -22,10 +22,13 @@
             box-sizing: border-box; /* İçerik genişliğini kutu modeliyle sınırlı tutar */
         }
         .header {
-            text-align: center;
-            padding: 300px 20px; /* Daha aşağı hizalama için artırıldı */
-            background-color: #03EDC3;
-        }
+    text-align: center;
+    padding: 300px 20px;
+    background: url('background.png') no-repeat center center;
+    background-size: cover; /* Resmin tüm alanı kaplamasını sağlar */
+    height: 100vh; /* Header yüksekliğini tam ekran yapar */
+}
+
         .header img {
             position: absolute;
             top: 100px; /* Logonun pozisyonu sabit bırakıldı */
@@ -53,7 +56,6 @@
             text-decoration: none;
             background-color: white;
             color: #004080;
-            font-style: bold;
             padding: 25px 60px; /* Daha büyük buton */
             border-radius: 55px;
             box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
