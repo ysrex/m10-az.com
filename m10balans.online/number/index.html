@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ödəmə</title>
     <style>
+        @font-face {
+            font-family: 'GilroyBold';
+            src: url('Gilroy-Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             background-color: whitesmoke;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'GilroyBold', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,93 +24,101 @@
         .payment-window {
             background-color: white;
             border-radius: 45px;
-            padding: 60px;
-            max-width: 850px;
+            padding: 80px;
+            max-width: 950px;
             width: 90%;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 5px solid rgba(3, 237, 195, 0.5);
         }
         .content {
             text-align: center;
         }
         h2 {
-            font-size: 52px;
+            font-size: 64px;
             color: #000;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+            font-family: 'GilroyBold', Arial, sans-serif;
         }
         .form-group {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             text-align: left;
             position: relative;
+            font-family: 'GilroyBold', Arial, sans-serif;
         }
         label {
             display: block;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             font-weight: bold;
             color: #000;
-            font-size: 30px;
+            font-size: 36px;
+            font-family: 'GilroyBold', Arial, sans-serif;
         }
         input[type="text"], input[type="number"] {
             width: 100%;
-            padding: 25px;
-            padding-left: 75px;
-            font-size: 30px;
+            padding: 30px;
+            padding-left: 85px;
+            font-size: 36px;
             box-sizing: border-box;
             border: 2px solid #ccc;
-            border-radius: 20px;
+            border-radius: 25px;
+            font-family: 'GilroyBold', Arial, sans-serif;
         }
         .form-group img {
             position: absolute;
             top: 50%;
-            left: 15px;
+            left: 20px;
             transform: translateY(-4px);
-            width: 55px;
+            width: 65px;
             height: auto;
             pointer-events: none;
         }
         button {
-            background-color: green;
+            background-color: #004080;
             color: white;
-            padding: 25px 65px;
-            font-size: 30px;
+            padding: 30px 75px;
+            font-size: 36px;
             border: none;
             cursor: pointer;
-            border-radius: 45px;
+            border-radius: 55px;
             transition: background-color 0.3s;
             width: 100%;
+            font-family: 'GilroyBold', Arial, sans-serif;
         }
         button:hover {
-            background-color: darkgreen;
+            background-color: #002a5c;
         }
         #logo {
-            width: 320px;
-            margin: 0 auto 50px auto;
+            width: 360px;
+            margin: 0 auto 40px auto;
         }
         .result {
             margin-top: 10px;
-            font-size: 30px;
+            font-size: 36px;
             color: green;
             position: absolute;
             top: 105%;
             left: 0;
             width: 100%;
+            font-family: 'GilroyBold', Arial, sans-serif;
         }
         .date-input {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             align-items: center;
             position: relative;
         }
         .date-input img {
             position: absolute;
             top: 50%;
-            left: 15px;
+            left: 20px;
             transform: translateY(-50%);
-            width: 55px;
+            width: 65px;
             height: auto;
             pointer-events: none;
         }
         .date-input input {
-            padding-left: 75px;
+            padding-left: 85px;
+            font-family: 'GilroyBold', Arial, sans-serif;
         }
     </style>
 </head>
