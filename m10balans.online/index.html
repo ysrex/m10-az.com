@@ -14,7 +14,7 @@
         body {
             margin: 0;
             font-family: 'GilroyBold', Arial, sans-serif;
-            background: linear-gradient(to bottom, #03EDC3 50%, white 50%);
+            background: linear-gradient(to bottom, #03EDC3 60%, transparent 40%);
             position: relative;
             min-height: 100vh;
             overflow-x: hidden; /* Yatay kaydırmayı tamamen kaldırır */
@@ -23,12 +23,12 @@
         }
         .header {
             text-align: center;
-            padding: 250px 20px; /* Daha aşağı hizalama için artırıldı */
+            padding: 300px 20px; /* Daha aşağı hizalama için artırıldı */
             background-color: #03EDC3;
         }
         .header img {
             position: absolute;
-            top: 90px; /* Logonun pozisyonu sabit bırakıldı */
+            top: 100px; /* Logonun pozisyonu sabit bırakıldı */
             left: 50px;
             width: 180px; /* Daha büyük logo */
             height: auto;
@@ -42,10 +42,7 @@
             font-size: 55px;
         }
         .header h2 {
-            font-size: 55px/* Daha büyük font boyutu */
-        }
-        .header h3 {
-            font-size: 50px; /* Daha büyük font boyutu */
+            font-size: 45px; /* Daha uyumlu font boyutu */
         }
         .button-container {
             display: flex;
@@ -63,7 +60,7 @@
             font-family: 'GilroyBold', Arial, sans-serif;
         }
         .blur-container {
-            background: rgba(255, 255, 255, 0.8); /* Bulanık arka plan */
+            background: rgba(255, 255, 255, 0); /* Bulanık arka plan */
             border-radius: 55px;
             padding: 40px;
             display: inline-block;
@@ -74,11 +71,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: white;
-            padding: 120px 20px; /* Daha fazla boşluk */
+            background-color: transparent; /* Beyaz arka plan kaldırıldı */
+            padding: 60px 20px; /* Daha az boşluk */
             border-top-left-radius: 30px;
             border-top-right-radius: 30px;
-            min-height: calc(100vh - 450px); /* Üst ve alt alanı hariç yüksekliği ayarlar */
+            min-height: calc(100vh - 500px); /* Üst ve alt alanı hariç yüksekliği ayarlar */
         }
         .content .image-section {
             display: flex;
@@ -92,7 +89,7 @@
         }
         .footer-image {
             position: absolute;
-            bottom: 100px; /* Daha aşağı hizalama için artırıldı */
+            bottom: 50px; /* Daha aşağı hizalama için artırıldı */
             left: 50%;
             transform: translateX(-50%);
             max-width: 100%;
