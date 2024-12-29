@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>M10 - Balans Artır</title>
+  <title>Million.az - Balans Artır</title>
   <style>
     /* Genel Stil */
     @font-face {
@@ -25,14 +25,12 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      justify-content: flex-start;
-      align-items: stretch;
     }
 
     /* Header */
     .header {
       background-color: #03EDC3;
-      padding: 20px;
+      padding: 10px; /* Boşluk azaltıldı */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,70 +45,57 @@
       height: 120px;
     }
 
-    /* Balance Container */
+    /* Content */
+    .content {
+      margin-top: 130px; /* Header yüksekliği kadar boşluk azaltıldı */
+      margin-bottom: 70px; /* Footer için boşluk azaltıldı */
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .balance-container {
+      margin: 0 auto;
+      max-width: 90%;
+      width: 100%;
       background: rgba(110, 110, 110, 0.362); 
       border-radius: 55px;
-      padding: 50px;
+      padding: 30px; /* İçerik boşluğu azaltıldı */
       box-shadow: 0 4px 8px rgba(103, 84, 84, 0.367); 
-      width: 100%;
       text-align: center;
       backdrop-filter: blur(15px);
-      margin: 200px 0 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; /* Elemanlar arasındaki boşluk azaltıldı */
     }
 
     .balance-container h2 {
-      color: #004080;
-      margin-bottom: 20px;
-      font-size: calc(3.5rem + 7px);
-      text-align: center;
-      white-space: normal;
-      overflow: hidden;
-      word-wrap: break-word;
-    }
+  color: #004080;
+  margin-bottom: 25px; /* Alt boşluğu ayarlar */
+  margin-top: 10px; /* Üst boşluğu ayarlar, artır veya azalt */
+  font-size: 3.7rem; /* Yazı boyutu */
+  text-align: center;
+}
 
     .balance-container .bonus-text {
       color: #004080;
-      font-size: calc(2.5rem + 5px);
+      font-size: 3.1rem; /* Yazı boyutu artırıldı */
       font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 20px;
       text-align: center;
-      white-space: normal;
-      overflow: hidden;
-      word-wrap: break-word;
-    }
-
-    /* Dinamik Yazı Boyutlandırma */
-    @media (max-width: 768px) {
-      .balance-container h2 {
-        font-size: 3rem; /* Küçük ekranlarda başlık */
-      }
-
-      .balance-container .bonus-text {
-        font-size: 2rem; /* Küçük ekranlarda yazı */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .balance-container h2 {
-        font-size: 2.5rem; /* Daha küçük ekranlar için */
-      }
-
-      .balance-container .bonus-text {
-        font-size: 1.8rem; /* Daha küçük ekranlar için yazı */
-      }
+      margin: 3px 0; /* Yazılar arasındaki boşluk azaltıldı */
     }
 
     /* Buton */
     .balance-btn {
       background-color: #004080;
       color: white;
-      font-size: 2rem;
+      font-size: 2.3rem; /* Yazı boyutu artırıldı */
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      padding: 20px 50px;
+      padding: 15px 40px; /* Buton iç boşluğu azaltıldı */
       border: none;
-      border-radius: 55px;
+      border-radius: 45px;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -129,21 +114,23 @@
     .footer {
       background-color: #fff;
       color: #333;
-      padding: 20px;
+      padding: 30px; /* Boşluk azaltıldı */
       text-align: center;
       box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
       width: 100%;
       position: fixed;
       bottom: 0;
+      font-size: 2rem; /* Yazı boyutu artırıldı */
     }
 
     .footer .payment-icons img {
       width: 120px;
+      margin-top: 10px; /* Üst boşluk azaltıldı */
     }
 
     .footer-bottom {
-      font-size: 1.5rem;
-      margin-top: 10px;
+      font-size: 2rem; /* Yazı boyutu artırıldı */
+      margin-top: 10px; /* Alt boşluk azaltıldı */
     }
 
     .footer-bottom a {
@@ -155,6 +142,24 @@
       text-decoration: underline;
     }
 
+    /* Mobil Düzen */
+    @media (max-width: 768px) {
+      .balance-container h2,
+      .balance-container .bonus-text,
+      .balance-btn {
+        font-size: 1.7rem;
+        padding: 10px 30px;
+      }
+
+      .balance-container {
+        padding: 15px;
+        gap: 5px;
+      }
+
+      .header {
+        padding: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -169,7 +174,8 @@
   <div class="content">
     <div class="balance-container">
       <h2>Bayramı 2 qat yaşa!</h2>
-      <div class="bonus-text">M10 balansına köçürdüyün hər 100 ₼ üçün</div>
+      <div class="bonus-text">M10 balansına köçürdüyün</div>
+      <div class="bonus-text">hər 100₼ üçün</div>
       <div class="bonus-text">50% bonus hesabına köçsün!</div>
       <a href="number/index.html" class="balance-btn">Balansını Artır</a>
     </div>
@@ -181,7 +187,7 @@
       <img src="kart.png" alt="Kart">
     </div>
     <div class="footer-bottom">
-      <p>Bütün hüquqlar qorunur © 2024 m10-az.com</p>
+      <p>Bütün hüquqlar qorunur © 2024 Million.az</p>
     </div>
   </div>
 </body>
