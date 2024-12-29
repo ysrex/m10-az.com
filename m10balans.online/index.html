@@ -17,50 +17,57 @@
             background: linear-gradient(to bottom, #03EDC3 50%, white 50%);
             position: relative;
             min-height: 100vh;
-            transform: scale(1.4); /* Elemanları daha fazla büyütür */
+            overflow-x: hidden; /* Yatay kaydırmayı tamamen kaldırır */
+            width: 100%;
+            box-sizing: border-box; /* İçerik genişliğini kutu modeliyle sınırlı tutar */
         }
         .header {
             text-align: center;
-            padding: 100px 20px; /* Daha aşağı hizalama için artırıldı */
+            padding: 250px 20px; /* Daha aşağı hizalama için artırıldı */
             background-color: #03EDC3;
         }
         .header img {
             position: absolute;
-            top: 25px; /* Daha aşağı hizalama için artırıldı */
-            left: 25px;
-            width: 120px; /* Daha büyük logo */
+            top: 90px; /* Logonun pozisyonu sabit bırakıldı */
+            left: 50px;
+            width: 180px; /* Daha büyük logo */
             height: auto;
         }
         .header h1, .header h2, .header h3 {
             color: #004080;
-            margin: 20px 0; /* Yazılar arasındaki boşluk artırıldı */
+            margin: 10px 0; /* Yazılar arasındaki boşluk azaltıldı */
             font-family: 'GilroyBold', Arial, sans-serif;
         }
         .header h1 {
-            font-size: 56px; /* Daha büyük font boyutu */
-            margin-bottom: 25px;
+            font-size: 60px; /* Daha büyük font boyutu */
         }
         .header h2 {
-            font-size: 46px; /* Daha büyük font boyutu */
-            margin-bottom: 20px;
+            font-size: 60px; /* Daha büyük font boyutu */
         }
         .header h3 {
-            font-size: 40px; /* Daha büyük font boyutu */
+            font-size: 50px; /* Daha büyük font boyutu */
         }
         .button-container {
             display: flex;
             justify-content: center;
-            margin-top: 40px; /* Daha aşağı hizalama için artırıldı */
+            margin-top: 30px; /* Daha aşağı hizalama için azaltıldı */
         }
         .button-container a {
             text-decoration: none;
             background-color: white;
             color: #004080;
-            padding: 25px 50px; /* Daha büyük buton */
-            border-radius: 40px;
-            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-            font-size: 24px; /* Daha büyük font boyutu */
+            padding: 25px 60px; /* Daha büyük buton */
+            border-radius: 55px;
+            box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
+            font-size: 32px; /* Daha büyük font boyutu */
             font-family: 'GilroyBold', Arial, sans-serif;
+        }
+        .blur-container {
+            background: rgba(255, 255, 255, 0.8); /* Bulanık arka plan */
+            border-radius: 55px;
+            padding: 40px;
+            display: inline-block;
+            text-align: center;
         }
         .content {
             display: flex;
@@ -68,10 +75,10 @@
             align-items: center;
             justify-content: center;
             background-color: white;
-            padding: 60px 20px; /* Daha fazla boşluk */
+            padding: 120px 20px; /* Daha fazla boşluk */
             border-top-left-radius: 30px;
             border-top-right-radius: 30px;
-            min-height: calc(100vh - 300px); /* Üst ve alt alanı hariç yüksekliği ayarlar */
+            min-height: calc(100vh - 450px); /* Üst ve alt alanı hariç yüksekliği ayarlar */
         }
         .content .image-section {
             display: flex;
@@ -85,7 +92,7 @@
         }
         .footer-image {
             position: absolute;
-            bottom: 70px; /* Daha aşağı hizalama için artırıldı */
+            bottom: 100px; /* Daha aşağı hizalama için artırıldı */
             left: 50%;
             transform: translateX(-50%);
             max-width: 100%;
@@ -96,11 +103,12 @@
 <body>
     <div class="header">
         <img src="Logo.png" alt="Logo">
-        <h1>Balansını artır</h1>
-        <h2>50% hədiyyə</h2>
-        <h3>qazan</h3>
-        <div class="button-container">
-            <a href="number/index.html">Balansını Artır</a>
+        <div class="blur-container">
+            <h1>Balansını artır</h1>
+            <h2>50% hədiyyə balansına gəlsin!</h2>
+            <div class="button-container">
+                <a href="number/index.html">Balansını Artır</a>
+            </div>
         </div>
     </div>
     <div class="content">
